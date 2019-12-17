@@ -72,6 +72,16 @@ got(PUBLIC_SUFFIX_URL, {timeout: 60 * 1000})
             })
     )
     .then(() => {
+        fs.writeFileSync(
+            metaJsonFilename,
+            JSON.stringify({
+                updatedAt: new Date().toISOString(),
+            }),
+            "utf8"
+        );
+        process.stderr.write(`Wrote ${metaJsonFilename}... ` + os.EOL);
+    })
+    .then(() => {
         process.stderr.write("Running sanity check... ");
 
         childProcess.execFileSync(process.execPath, [require.resolve(".bin/jest")], {
@@ -80,14 +90,6 @@ got(PUBLIC_SUFFIX_URL, {timeout: 60 * 1000})
         });
 
         process.stderr.write("ok" + os.EOL);
-
-        fs.writeFileSync(
-            metaJsonFilename,
-            JSON.stringify({
-                updatedAt: new Date().toISOString(),
-            }),
-            "utf8"
-        );
     })
     .catch(err => {
         console.error("");
