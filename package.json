@@ -1,5 +1,5 @@
 {
-  "name": "parse-domain",
+  "name": "@cypress/parse-domain",
   "version": "2.3.4",
   "description": "Splits an url into sub-domain, domain and effective top-level-domain",
   "main": "./lib/parseDomain.js",
@@ -32,7 +32,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/peerigon/parse-domain.git"
+    "url": "https://github.com/cypress-io/parse-domain.git"
   },
   "author": "peerigon <developers@peerigon.com>",
   "license": "Unlicense",
